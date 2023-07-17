@@ -34,7 +34,7 @@ export const Header = memo(() => {
             <Box pr={4}>
             <Link onClick={onClickSetting}>設定</Link>
             </Box>
-            <Link onClick={onClickLogin}>ログイン画面</Link>
+            <Link onClick={onClickLogin}>開始画面</Link>
         </Flex>
           <MenuIconButton onOpen = {onOpen} />
         </Flex>
