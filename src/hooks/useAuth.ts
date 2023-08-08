@@ -20,13 +20,13 @@ export const useAuth = () => {
             if (res.data) {
                 const isAdmin = res.data.id === 10 ? true : false;
                 setloginUser({...res.data, isAdmin});
-                showMessage({title:"ログインしました", status:"success"});
+                showMessage({title:"正常起動を確認しました", status:"success"});
                 onClickHome();
             } else {
-                showMessage({title:"ユーザが見つかりません", status:"error"});
+                showMessage({title:"起動に失敗しました", status:"error"});
                 setLoading(false);
             }
-        }).catch(() => {showMessage({title:"ログインできません", status:"error"})
+        }).catch(() => {showMessage({title:"起動に失敗しました", status:"error"})
           setLoading(false);
         })
         .finally(() => setLoading(false));

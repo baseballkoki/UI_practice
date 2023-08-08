@@ -25,14 +25,14 @@ export const Header = memo(() => {
         >
         
         <Flex align="center" as="a" mr={8} _hover={{cursor:"pointer"}} onClick={onClickHome}>
-          <Heading as="h1" fontSize={{ base: "md", md: "lg"}}>ユーザー管理アプリ</ Heading>
+          <Heading as="h1" fontSize={{ base: "md", md: "lg"}}>猫性格診断アプリ</ Heading>
         </Flex>
         <Flex align="center" fontSize= "sm" flexGrow={2} display={{base:"none", md:"flex"}}>
             <Box pr={4}>
-              <Link onClick={onClickUserManagement}>ユーザー一覧</Link>
+              <Link onClick={onClickUserManagement}>性格タイプ</Link>
             </Box>
             <Box pr={4}>
-            <Link onClick={onClickSetting}>設定</Link>
+            <Link onClick={onClickSetting}>問い合わせ</Link>
             </Box>
             <Link onClick={onClickLogin}>開始画面</Link>
         </Flex>

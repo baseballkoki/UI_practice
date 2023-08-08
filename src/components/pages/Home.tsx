@@ -15,22 +15,39 @@ export const Home = () => {
 
   const uploadFile = async () => {
     if (!file) {
-        alert("ccc");
+        alert("画像を選択してださい");
       return;
     }
 
     const formData = new FormData();
-    formData.append("image", file ? file : "default.jpg");
+    formData.append("imageFile", file ? file : "default.jpg");
 
     setIsLoading(true);
     
-    // const response = await fetch("http://your-api-url.com/upload", {
-    //   method: "POST",
-    //   body: formData,
-    // });
-    
+    const response = await fetch("http://localhost:4646/services/v1/nyanko/predict", {
+      method: "POST",
+      body: formData,
+    });
 
-    //const data = await response.json();
+    // const response = await fetch("http://localhost:4646/services/v1/nyanko/test", {
+    //    method: "POST",
+    //  });
+
+    //  const responseBody = await response.text();
+    // alert(responseBody);
+
+
+    const dataFromResponse = await response.json();  // レスポンスをJSONとして解析
+
+  if (Array.isArray(dataFromResponse)) {  // 解析したデータが配列であるか確認
+    for (const number of dataFromResponse) {
+      alert(number);  // 配列の中の各整数をalertで出力
+    }
+  } else {
+    alert("データが配列ではありません。");
+  }
+
+    // const data = await response.json();
 
     const data = {
         cuteness: 80,
@@ -77,20 +94,18 @@ export const Home = () => {
 
       {result ? (
   <div className="results-section">
-    <h2 className="cute-font">画像解析結果</h2>
     <ProgressBar title="賢さ" value={result.cuteness} max={100} />
     <ProgressBar title="血の気の多さ" value={result.smartness} max={100} />
     <ProgressBar title="社交性(対猫)" value={result.strength} max={100} />
-    <ProgressBar title="社交性(対人間)" value={result.cooperation} max={100} />
+    <ProgressBar title="美形度" value={result.cooperation} max={100} />
     <ProgressBar title="優しさ" value={result.affectionTowardsOwner} max={100} />
     <ProgressBar title="甘えん坊" value={result.oldnessOfFace} max={100} />
-    <ProgressBar title="食い意地" value={result.oldnessOfFace} max={100} />
     <ProgressBar title="面倒見の良さ" value={result.oldnessOfFace} max={100} />
     <ProgressBar title="寂しがり度" value={result.oldnessOfFace} max={100} />
   </div>
 ) : (
   <div style={{textAlign: "center"}}>AIが画像から猫の顔の造形を精密に解析し、猫の性格を診断します。<br></br>
-    あなたの家の猫ちゃんの独特な性格、今まで見えなかった一面が明らかになるかもしれません。</div>
+    あなたの家の猫ちゃんの独特な性格や今まで見えなかった一面が明らかになるかもしれません。</div>
 )}
     </div>
   );
