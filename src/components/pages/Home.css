@@ -71,10 +71,15 @@ body {
     width: 100%;
   }
 
+  .results-section h2:nth-child(1) {
+    text-align: center;
+    font-size: 2.5em; /* フォントサイズを大きく */
+  }
+
   .cute-font {
     font-family: 'Gaegu', cursive; /* Use the imported font */
     color: #ff69b4; /* Hot pink for extra cuteness */
     font-size: 32px; /* Adjust the size as needed */
   }
 
-  
+

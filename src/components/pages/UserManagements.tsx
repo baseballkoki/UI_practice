@@ -5,12 +5,13 @@ import { useSelectUser } from "../../hooks/useSelectUser"
 import { useEffect } from "react";
 import { UserDetailModal } from "../organisms/user/UserDetailModal"
 import { useLoginUser } from "../../hooks/useLoginUser";
+import nyanko4 from "../../image/nyanko4.jpg"
 
 
 export const UserManagements = () => {
 
     const { isOpen, onOpen, onClose} = useDisclosure()
-    const { getUsers, users, loading } = useAllUsers();
+    const { getUsers, cats, loading } = useAllUsers();
     const { onSelectUser, selectedUser } = useSelectUser();
     const { loginUser } = useLoginUser();
     console.log(loginUser)
@@ -19,7 +20,7 @@ export const UserManagements = () => {
     useEffect(() => getUsers ,[])
 
     const onClickUser = (id: number) => {
-        onSelectUser({ id, users, onOpen })
+        onSelectUser({ id, cats, onOpen })
         onOpen()
     }
 
@@ -31,20 +32,20 @@ export const UserManagements = () => {
         </Center>
         ): (
         <Wrap p={{base:4, md: 10}}>
-            {users.map((user) => (
-            <WrapItem key={user.id} mx="auto">
+            {cats.map((cat) => (
+            <WrapItem key={cat.id} mx="auto">
                 <UserCard 
-                id={user.id}
-                imageUrl="https://source.unsplash.com/random" 
-                userName={user.username} 
-                fullName={user.name}
+                id={cat.id}
+                imageUrl={nyanko4}
+                userName={cat.type} 
+                fullName={cat.text}
                 onClick = {onClickUser}
                 />
             </WrapItem>
             ))}
         </Wrap>
         )}
-           <UserDetailModal user={selectedUser} isOpen={isOpen} isAdmin={loginUser?.isAdmin} onClose={onClose}/>
+           <UserDetailModal cat={selectedUser} isOpen={isOpen} isAdmin={loginUser?.isAdmin} onClose={onClose}/>
         </>
     )
 };

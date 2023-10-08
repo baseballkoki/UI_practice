@@ -2,9 +2,10 @@ import { Box, Modal, ModalHeader, Input, Stack, Wrap, WrapItem, Image, Text,Spin
 import { ChangeEvent, memo, ReactNode, useEffect, useState } from "react";
 import { PrimatyButton } from "../../atoms/button/PrimatyButton";
 import { User } from "../../types/api/user"
+import { cat } from "../../../components/types/api/cat";
 
 type Props = {
-   user: User | null
+   cat: cat | null
    isOpen: boolean;
    isAdmin?: boolean;
    onClose: () => void;
@@ -12,52 +13,41 @@ type Props = {
 
 export const UserDetailModal = memo((props:Props) => {
 
-    const { user, isOpen, isAdmin=false, onClose} = props;
+    const { cat, isOpen, isAdmin=false, onClose} = props;
 
     const onClickUpdate = () => alert("追加実装");
 
-    const [username, setUsername] = useState(user?.username);
-    const [name, setName] = useState(user?.name);
-    const [email, setEmail] = useState(user?.email);
+    const [catname, setUsername] = useState(cat?.type);
+    const [name, setName] = useState(cat?.text);
+    
 
     useEffect(() => {
-        setUsername(user?.username ?? '')
-        setUsername(user?.name ?? '')
-        setUsername(user?.email ?? '')
-    }, [user]);
+        setUsername(cat?.type ?? '')
+        setUsername(cat?.text ?? '')
+    }, [cat]);
 
     const onChangeUserName = (e: ChangeEvent<HTMLInputElement>) =>
       setUsername(e.target.value);
     const onChangeName = (e: ChangeEvent<HTMLInputElement>) =>
       setName(e.target.value);
-    const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) =>
-      setEmail(e.target.value);
 
-      console.log("name"+name);
+      //console.log("name"+name);
 
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent pb={6}>
-                <ModalHeader>ユーザー詳細</ModalHeader>
+                <ModalHeader>性格情報</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody mx={4}>
                     <Stack spacing={4}>
                        <FormControl>
-                        <FormLabel>名前</FormLabel>
-                        <Input value={username} onChange={onChangeUserName}  isReadOnly={!isAdmin} />
+                        <FormLabel>性格タイプ</FormLabel>
+                        <Input value={catname} onChange={onChangeUserName}  isReadOnly={!isAdmin} />
                        </FormControl>
                        <FormControl>
-                        <FormLabel>フルネーム</FormLabel>
-                        <Input value={user?.name} onChange={onChangeName} isReadOnly={!isAdmin} />
-                       </FormControl>
-                       <FormControl>
-                        <FormLabel>メールアドレス</FormLabel>
-                        <Input value={user?.email} onChange={onChangeEmail} isReadOnly={!isAdmin} />
-                       </FormControl>
-                       <FormControl>
-                        <FormLabel>電話番号</FormLabel>
-                        <Input value={user?.phone} isReadOnly={!isAdmin} />
+                        <FormLabel>説明</FormLabel>
+                        <Input value={cat?.text} onChange={onChangeName} isReadOnly={!isAdmin} />
                        </FormControl>
                     </Stack>
                 </ModalBody>

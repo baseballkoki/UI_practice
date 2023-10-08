@@ -26,8 +26,7 @@ export const UserCard = memo((props:Props) => {
                     alt="プロフィール画像"
                     m="auto"
                     boxSize="160px" src={imageUrl} />
-                <Text fontSize="lg" fontWeight="bold">{userName}</Text>
-                <Text fontSize="sm" fontWeight="bold">{fullName}</Text>
+                <Text paddingTop={3} fontSize="lg" fontWeight="bold">{userName}</Text>
             </Stack>
         </Box>
     )
