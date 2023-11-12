@@ -25,8 +25,8 @@ export const MenuDrawer = memo((props:Props) => {
             <DrawerContent>
             <DrawerBody p={0} bg="gray.100" >
                 <Button w="100%" onClick={onClickHome}>トップ</Button>
-                <Button w="100%" onClick={onClickUserManagement}>ユーザー一覧</Button>
-                <Button w="100%" onClick={onClickSetting}>設定</Button>
+                <Button w="100%" onClick={onClickUserManagement}>性格タイプ</Button>
+                <Button w="100%" onClick={onClickSetting}>問い合わせ</Button>
             </DrawerBody>
             </DrawerContent>
         </DrawerOverlay>

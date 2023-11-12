@@ -22,8 +22,10 @@ export const UserManagements = () => {
         onSelectUser({ id, cats, onOpen })
         onOpen()
     }
+    console.log("適当なログ")
 
     const getRandomImage = () => {
+        console.log("画像選びちゅ")
         const randomIndex = Math.floor(Math.random() * 20) + 1; // 1から20までの数を生成
         return `/image/nyanko${randomIndex}.jpg`; // publicディレクトリのパスを直接使う
     };
