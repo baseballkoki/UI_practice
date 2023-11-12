@@ -19,7 +19,7 @@ export const Login = memo(() => {
                <Heading as="h1" size="lg" textAlign="center">猫ちゃんAI性格診断</Heading>
                <Divider my={8}/>
                <Stack spacing={4} py={4} px={10}>
-               <Input placeholder="ユーザID" value={"下のボタンを押してね"} onChange={onChangeUserId} disabled={true}/>
+               {/* <Input placeholder="ユーザID" value={"下のボタンを押してね"} onChange={onChangeUserId} disabled={true}/> */}
                <PrimatyButton  loading={loading} onClick={onClickLogin}>開始</PrimatyButton>
                </Stack>
             </Box>

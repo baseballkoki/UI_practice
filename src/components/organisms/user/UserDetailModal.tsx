@@ -5,59 +5,72 @@ import { User } from "../../types/api/user"
 import { cat } from "../../../components/types/api/cat";
 
 type Props = {
-   cat: cat | null
-   isOpen: boolean;
-   isAdmin?: boolean;
-   onClose: () => void;
-}
+  cat: cat | null;
+  isOpen: boolean;
+  isAdmin?: boolean;
+  onClose: () => void;
+};
 
-export const UserDetailModal = memo((props:Props) => {
+export const UserDetailModal = memo((props: Props) => {
+  const { cat, isOpen, isAdmin = false, onClose } = props;
 
-    const { cat, isOpen, isAdmin=false, onClose} = props;
+  const onClickUpdate = () => alert("追加実装");
 
-    const onClickUpdate = () => alert("追加実装");
+  const [catName, setCatName] = useState("");
+  const [description, setDescription] = useState("");
 
-    const [catname, setUsername] = useState(cat?.type);
-    const [name, setName] = useState(cat?.text);
-    
+  useEffect(() => {
+    setCatName(cat?.type ?? "");
+    setDescription(cat?.text ?? "");
+  }, [cat]);
 
-    useEffect(() => {
-        setUsername(cat?.type ?? '')
-        setUsername(cat?.text ?? '')
-    }, [cat]);
+  const onChangeCatName = (e: ChangeEvent<HTMLInputElement>) =>
+    setCatName(e.target.value);
+  const onChangeDescription = (e: ChangeEvent<HTMLInputElement>) =>
+    setDescription(e.target.value);
 
-    const onChangeUserName = (e: ChangeEvent<HTMLInputElement>) =>
-      setUsername(e.target.value);
-    const onChangeName = (e: ChangeEvent<HTMLInputElement>) =>
-      setName(e.target.value);
-
-      //console.log("name"+name);
-
-    return (
-        <Modal isOpen={isOpen} onClose={onClose}>
-            <ModalOverlay />
-            <ModalContent pb={6}>
-                <ModalHeader>性格情報</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody mx={4}>
-                    <Stack spacing={4}>
-                       <FormControl>
-                        <FormLabel>性格タイプ</FormLabel>
-                        <Input value={catname} onChange={onChangeUserName}  isReadOnly={!isAdmin} />
-                       </FormControl>
-                       <FormControl>
-                        <FormLabel>説明</FormLabel>
-                        <Input value={cat?.text} onChange={onChangeName} isReadOnly={!isAdmin} />
-                       </FormControl>
-                    </Stack>
-                </ModalBody>
-                {isAdmin && (
-                <ModalFooter>
-                  <PrimatyButton onClick={onClickUpdate}>更新</PrimatyButton>
-                </ModalFooter>
-                )}
-            </ModalContent>
-        </Modal>
-    )
-    
+  return (
+    <Modal isOpen={isOpen} onClose={onClose} size="xl">
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>性格情報</ModalHeader>
+        <ModalCloseButton />
+        <ModalBody mx={4}>
+          <Stack spacing={4}>
+            {isAdmin && (
+              <>
+                <FormControl>
+                  <FormLabel>性格タイプ</FormLabel>
+                  <Input
+                    value={catName}
+                    onChange={onChangeCatName}
+                    isReadOnly={!isAdmin}
+                  />
+                </FormControl>
+                <FormControl>
+                  <FormLabel>説明</FormLabel>
+                  <Input
+                    value={description}
+                    onChange={onChangeDescription}
+                    isReadOnly={!isAdmin}
+                  />
+                </FormControl>
+              </>
+            )}
+            {!isAdmin && (
+              <Stack spacing={4}>
+                <Text fontWeight="bold">性格タイプ: {catName}</Text>
+                <Text>{description}</Text>
+              </Stack>
+            )}
+          </Stack>
+        </ModalBody>
+        {isAdmin && (
+          <ModalFooter>
+            <PrimatyButton onClick={onClickUpdate}>更新</PrimatyButton>
+          </ModalFooter>
+        )}
+      </ModalContent>
+    </Modal>
+  );
 });

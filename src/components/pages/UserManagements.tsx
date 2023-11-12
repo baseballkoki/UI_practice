@@ -5,7 +5,6 @@ import { useSelectUser } from "../../hooks/useSelectUser"
 import { useEffect } from "react";
 import { UserDetailModal } from "../organisms/user/UserDetailModal"
 import { useLoginUser } from "../../hooks/useLoginUser";
-import nyanko4 from "../../image/nyanko4.jpg"
 
 
 export const UserManagements = () => {
@@ -24,6 +23,11 @@ export const UserManagements = () => {
         onOpen()
     }
 
+    const getRandomImage = () => {
+        const randomIndex = Math.floor(Math.random() * 20) + 1; // 1から20までの数を生成
+        return `/image/nyanko${randomIndex}.jpg`; // publicディレクトリのパスを直接使う
+    };
+
     return (
         <>
         {loading ? ( 
@@ -32,11 +36,11 @@ export const UserManagements = () => {
         </Center>
         ): (
         <Wrap p={{base:4, md: 10}}>
-            {cats.map((cat) => (
+            {cats.map((cat, index) => (
             <WrapItem key={cat.id} mx="auto">
                 <UserCard 
                 id={cat.id}
-                imageUrl={nyanko4}
+                imageUrl={`/image/nyanko${index + 1}.jpg`}
                 userName={cat.type} 
                 fullName={cat.text}
                 onClick = {onClickUser}
