@@ -16,7 +16,9 @@ export const UserManagements = () => {
     console.log(loginUser)
 
 
-    useEffect(() => getUsers ,[])
+    useEffect(() => {
+        getUsers(); // 関数を呼び出してAPIを叩く
+      }, [getUsers]); // getUsersを依存配列に含める
 
     const onClickUser = (id: number) => {
         onSelectUser({ id, cats, onOpen })

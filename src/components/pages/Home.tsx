@@ -24,14 +24,6 @@ export const Home = () => {
         alert("画像を選択してださい");
       return;
     }
-
-    // let processedFile = file; // let変数に変更して再代入可能にする
-
-    // if (file.size > 400000) {
-    //   // Resize the image to 1300x1300 pixels
-    //   const blob = await resizeImage(file); // resizeImageがBlobを返すようにする
-    //   processedFile = new File([blob], file.name, { type: file.type }); // 新しいFileオブジェクトを作成
-    // }
     
     const formData = new FormData();
     formData.append("imageFile", file ? file : "default.jpg");
@@ -72,58 +64,6 @@ export const Home = () => {
   };
 
 
-  // const resizeImage = (file: File): Promise<Blob> => new Promise((resolve, reject) => {
-  //   // Create an image object
-  //   const img = new Image();
-  
-  //   // Create a file reader
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(file);
-  
-  //   reader.onload = (event: ProgressEvent<FileReader>) => {
-  //     const result = event.target?.result; // event.targetがnullでないことを確認
-  //     if (typeof result === 'string') { // resultがstring型であることを確認
-  //       img.src = result;
-  //     } else {
-  //       reject(new Error('FileReaderの結果がstring型ではありません。'));
-  //     }
-  //   };
-  
-  //   img.onload = () => {
-  //     // Create a canvas
-  //     const canvas = document.createElement('canvas');
-  //     const ctx = canvas.getContext('2d');
-  //     if (!ctx) {
-  //       reject(new Error('2Dコンテキストを取得できませんでした。'));
-  //       return;
-  //     }
-  
-  //     // Calculate the resize width and height
-  //     const scaleFactor = Math.sqrt(400000 / file.size); // 縮小率を計算
-  //     canvas.width = img.width * scaleFactor; // オリジナルのアスペクト比を維持する
-  //     canvas.height = img.height * scaleFactor; // オリジナルのアスペクト比を維持する
-  
-  //     // Draw the image on the canvas
-  //     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-  
-  //     // Convert the canvas to a blob
-  //     canvas.toBlob((blob) => {
-  //       if (blob) {
-  //         resolve(blob);
-  //       } else {
-  //         reject(new Error('Canvas to Blob変換に失敗しました'));
-  //       }
-  //     }, file.type);
-  //   };
-  
-  //   reader.onerror = (error: ProgressEvent<FileReader>) => {
-  //     reject(error);
-  //   };
-  // });
-
-
-
-
   const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files?.length) {
       setFile(event.target.files[0]);
@@ -154,6 +94,7 @@ export const Home = () => {
             <button className="upload-btn" onClick={uploadFile} disabled={isLoading}>
               解析を開始する
             </button>
+            {isLoading && <p>処理中...10秒ほどかかることがあります</p>} 
           </>
         ) : (
           <img src={preview?.toString()} alt="Preview" className="preview-image" />
