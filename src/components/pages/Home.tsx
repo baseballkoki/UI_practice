@@ -38,8 +38,8 @@ export const Home = () => {
 
     setIsLoading(true);
     
-    //const response = await fetch("https://api-practice-spring.onrender.com/services/v1/nyanko/predict", {
-    const response = await fetch("http://localhost:4646/services/v1/nyanko/predict", {
+    const response = await fetch("https://api-practice-spring.onrender.com/services/v1/nyanko/predict", {
+    //const response = await fetch("http://localhost:4646/services/v1/nyanko/predict", {
       method: "POST",
       body: formData,
     });
@@ -57,8 +57,8 @@ export const Home = () => {
   const numbersQueryParam = dataFromResponse.map((num: number) => `numbers=${num}`).join('&');
 
   // 続いてdataFromResponseを用いて2つ目のAPIを呼び出す
-  //const testResponse = await fetch(`https://api-practice-spring.onrender.com/services/v1/nyanko/type?${numbersQueryParam}`, {
-  const testResponse = await fetch(`http://localhost:4646/services/v1/nyanko/type?${numbersQueryParam}`, {
+  const testResponse = await fetch(`https://api-practice-spring.onrender.com/services/v1/nyanko/type?${numbersQueryParam}`, {
+  //const testResponse = await fetch(`http://localhost:4646/services/v1/nyanko/type?${numbersQueryParam}`, {
     method: "GET",  // GETメソッドに変更
   });
 

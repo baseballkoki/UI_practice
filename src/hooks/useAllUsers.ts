@@ -14,8 +14,8 @@ export const useAllUsers = () => {
     const getUsers = useCallback(() => {
         console.log("apiへ通信開始")
         setLoading(true);
-        //axios.get<Array<cat>>(`https://api-practice-spring.onrender.com/services/v1/nyanko/all`)
-        axios.get<Array<cat>>(`http://localhost:4646/services/v1/nyanko/all`)
+        axios.get<Array<cat>>(`https://api-practice-spring.onrender.com/services/v1/nyanko/all`)
+        //axios.get<Array<cat>>(`http://localhost:4646/services/v1/nyanko/all`)
         .then((res) => setUsers(res.data))
         .catch(() => 
          showMessage({title:"取得に失敗しました", status:"error"})
