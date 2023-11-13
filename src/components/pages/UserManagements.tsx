@@ -32,6 +32,8 @@ export const UserManagements = () => {
 
     return (
         <>
+        <h2>{loading}</h2>
+        <h2>読み込んでるよ</h2>
         {loading ? ( 
         <Center h="100vh">
         <Spinner /> 
@@ -51,6 +53,7 @@ export const UserManagements = () => {
             ))}
         </Wrap>
         )}
+        <h2>読み込んでるよ2</h2>
            <UserDetailModal cat={selectedUser} isOpen={isOpen} isAdmin={loginUser?.isAdmin} onClose={onClose}/>
         </>
     )

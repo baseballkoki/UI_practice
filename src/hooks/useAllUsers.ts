@@ -9,6 +9,7 @@ export const useAllUsers = () => {
 
     const [loading, setLoading] = useState(false);
     const [cats, setUsers] = useState<Array<cat>>([]);
+    console.log("apiへ通信開始しそう")
 
     const getUsers = useCallback(() => {
         console.log("apiへ通信開始")
