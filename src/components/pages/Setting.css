@@ -1,0 +1,28 @@
+/* Setting.css */
+.setting-container {
+    max-width: 600px;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.setting-section {
+    margin-bottom: 20px;
+}
+
+.setting-section h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.setting-section p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.twitter-link {
+    color: #1DA1F2;
+    text-decoration: none;
+}

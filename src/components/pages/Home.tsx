@@ -121,8 +121,24 @@ export const Home = () => {
           )}
   </>
 ) : (
-  <div style={{textAlign: "center"}}>AIが画像から猫の顔の造形を精密に解析し、猫の性格を診断します。<br></br>
-    あなたの家の猫ちゃんの独特な性格や今まで見えなかった一面が明らかになるかもしれません。</div>
+  <div className="cat-analysis-section">
+      <div className="cat-analysis-box">
+      <div className="icon-container">
+        <img src={`/image/icon_ai.jpg`} alt="Icon" className="cat-analysis-icon" />
+          <div className="icon-text">
+          AIが画像から猫の顔の造形を精密に解析し、猫の性格を診断します。
+        </div>
+      </div>
+      </div>
+      <div className="cat-analysis-box">
+      <div className="icon-container">
+        <img src={`/image/icon_camera.jpg`} alt="Icon" className="cat-analysis-icon" />
+        <div className="icon-text">
+          猫の顔が大きく映っている画像を選択してください
+        </div>
+      </div>
+      </div>
+  </div>
 )}
     </div>
   );

@@ -82,4 +82,34 @@ body {
     font-size: 32px; /* Adjust the size as needed */
   }
 
+  .cat-analysis-section {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+  }
+  
+  .cat-analysis-box {
+    background-color: #b2d8b2; /* 淡い緑色 */
+    border-radius: 10px; /* 角の丸み */
+    padding: 20px;
+    width: 45%; /* 二つのボックスが横に並ぶように設定 */
+    align-items: center;
+    display: flex;
+    justify-content: center; /* 横方向の中央揃え */
+  }
+  
+  .icon-container {
+    display: flex;
+    flex-direction: column; /* 縦方向の配置 */
+    align-items: center; /* 水平方向の中央揃え */
+  }
+
+  .cat-analysis-icon {
+    width: 70px; /* アイコンの幅を50ピクセルに設定 */
+    height: 70px; /* アイコンの高さを50ピクセルに設定 */
+  }
+  
+  .icon-text {
+    text-align: center; /* テキストの中央揃え */
+  }
 

@@ -24,10 +24,8 @@ export const UserManagements = () => {
         onSelectUser({ id, cats, onOpen })
         onOpen()
     }
-    console.log("適当なログ")
 
     const getRandomImage = () => {
-        console.log("画像選びちゅ")
         const randomIndex = Math.floor(Math.random() * 20) + 1; // 1から20までの数を生成
         return `/image/nyanko${randomIndex}.jpg`; // publicディレクトリのパスを直接使う
     };
@@ -35,7 +33,6 @@ export const UserManagements = () => {
     return (
         <>
         <h2>{loading}</h2>
-        <h2>読み込んでるよ</h2>
         {loading ? ( 
         <Center h="100vh">
         <Spinner /> 
@@ -55,7 +52,6 @@ export const UserManagements = () => {
             ))}
         </Wrap>
         )}
-        <h2>読み込んでるよ2</h2>
            <UserDetailModal cat={selectedUser} isOpen={isOpen} isAdmin={loginUser?.isAdmin} onClose={onClose}/>
         </>
     )
