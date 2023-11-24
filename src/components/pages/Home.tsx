@@ -125,6 +125,7 @@ export const Home = () => {
       {result ? (
         <>
   <div className="results-section">
+  <AdmaxAd />
     <ProgressBar title="賢さ" value={result[0]} max={100} />
     <ProgressBar title="血の気の多さ" value={result[1]} max={100} />
     <ProgressBar title="社交性" value={result[2]} max={100} />
@@ -147,7 +148,7 @@ export const Home = () => {
       <div className="icon-container">
         <img src={`/image/icon_ai.jpg`} alt="Icon" className="cat-analysis-icon" />
           <div className="icon-text">
-          AIが画像から猫の顔の造形を精密に解析し、猫の性格を診断します。
+          AIが画像から猫の顔の造形を精密に解析し性格を診断します。
         </div>
       </div>
       </div>
