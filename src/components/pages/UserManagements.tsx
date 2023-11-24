@@ -52,12 +52,16 @@ export const UserManagements = () => {
         //     ))}
         // </Wrap>
         <Wrap 
-  spacing={{ base: "20px", md: "40px" }} // ベースと中間サイズの間隔を調整
-  justify="center" // カードを中央揃えにする
+  spacing={{ base: "20px", md: "30px" }} // ベースと中間サイズの間隔を調整
+  justify={{ base: "center", md: "flex-start" }} // 基本は中央揃え、PCでは左揃え
+  align="center" // 縦方向も中央揃え
   p={{ base: 4, md: 10 }}
 >
   {cats.map((cat, index) => (
-    <WrapItem key={cat.id} mx="auto" w={{ base: "100%", md: "45%" }} // モバイルで100%、PCで45%の幅 
+    <WrapItem 
+      key={cat.id} 
+      mx="auto" 
+      w={{ base: "calc(50% - 20px)", md: "auto" }} // モバイルでは幅を50%に、PCでは自動調整
     >
       <UserCard 
         id={cat.id}
@@ -69,6 +73,7 @@ export const UserManagements = () => {
     </WrapItem>
   ))}
 </Wrap>
+
 
         )}
            <UserDetailModal cat={selectedUser} isOpen={isOpen} isAdmin={loginUser?.isAdmin} onClose={onClose}/>
