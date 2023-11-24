@@ -24,7 +24,7 @@ export const Header = memo(() => {
         padding={{ base:3 , md:5 }}
         >
         
-        <Flex align="center" as="a" mr={8} _hover={{cursor:"pointer"}} onClick={onClickHome}>
+        <Flex align="center" as="a" mr={8} _hover={{cursor:"pointer"}} onClick={onClickLogin}>
           <Heading as="h1" fontSize={{ base: "md", md: "lg"}}>猫性格診断アプリ</ Heading>
         </Flex>
         <Flex align="center" fontSize= "sm" flexGrow={2} display={{base:"none", md:"flex"}}>
@@ -34,7 +34,7 @@ export const Header = memo(() => {
             <Box pr={4}>
             <Link onClick={onClickSetting}>問い合わせ</Link>
             </Box>
-            <Link onClick={onClickLogin}>開始画面</Link>
+            <Link onClick={onClickHome}>診断画面</Link>
         </Flex>
           <MenuIconButton onOpen = {onOpen} />
         </Flex>

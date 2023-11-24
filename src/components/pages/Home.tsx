@@ -30,8 +30,8 @@ export const Home = () => {
 
     setIsLoading(true);
     
-    const response = await fetch("https://api-practice-spring.onrender.com/services/v1/nyanko/predict", {
-    //const response = await fetch("http://localhost:4646/services/v1/nyanko/predict", {
+    //const response = await fetch("https://api-practice-spring.onrender.com/services/v1/nyanko/predict", {
+    const response = await fetch("http://localhost:4646/services/v1/nyanko/predict", {
       method: "POST",
       body: formData,
     });
@@ -49,8 +49,8 @@ export const Home = () => {
   const numbersQueryParam = dataFromResponse.map((num: number) => `numbers=${num}`).join('&');
 
   // 続いてdataFromResponseを用いて2つ目のAPIを呼び出す
-  const testResponse = await fetch(`https://api-practice-spring.onrender.com/services/v1/nyanko/type?${numbersQueryParam}`, {
-  //const testResponse = await fetch(`http://localhost:4646/services/v1/nyanko/type?${numbersQueryParam}`, {
+  //const testResponse = await fetch(`https://api-practice-spring.onrender.com/services/v1/nyanko/type?${numbersQueryParam}`, {
+  const testResponse = await fetch(`http://localhost:4646/services/v1/nyanko/type?${numbersQueryParam}`, {
     method: "GET",  // GETメソッドに変更
   });
 
@@ -82,6 +82,25 @@ export const Home = () => {
         setShowCatData(true);
       }, 3000);
     }
+
+    // 広告スクリプトのロード
+    const scriptId = 'ad-script';
+    if (!document.getElementById(scriptId)) {
+      const script = document.createElement('script');
+      script.id = scriptId;
+      script.src = 'https://adm.shinobi.jp/s/78747c8b235603c5f3bc4ca0b3b76667';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+
+    // 既存の useEffect ロジックに関連するクリーンアップ関数がある場合はここに追加
+    return () => {
+      // 既存のクリーンアップロジックがあればここに
+      const existingScript = document.getElementById(scriptId);
+      if (existingScript) {
+        document.body.removeChild(existingScript);
+      }
+    };
   }, [catData]);
 
 
@@ -90,6 +109,7 @@ export const Home = () => {
        <div className="upload-section">
         {!showPreview ? (
           <>
+          <script src="https://adm.shinobi.jp/s/78747c8b235603c5f3bc4ca0b3b76667"></script>
             <input type="file" onChange={onFileChange} />
             <button className="upload-btn" onClick={uploadFile} disabled={isLoading}>
               解析を開始する
