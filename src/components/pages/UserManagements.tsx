@@ -38,19 +38,38 @@ export const UserManagements = () => {
         <Spinner /> 
         </Center>
         ): (
-        <Wrap p={{base:4, md: 10}}>
-            {cats.map((cat, index) => (
-            <WrapItem key={cat.id} mx="auto">
-                <UserCard 
-                id={cat.id}
-                imageUrl={`/image/nyanko${index + 1}.jpg`}
-                userName={cat.type} 
-                fullName={cat.text}
-                onClick = {onClickUser}
-                />
-            </WrapItem>
-            ))}
-        </Wrap>
+        // <Wrap p={{base:4, md: 10}}>
+        //     {cats.map((cat, index) => (
+        //     <WrapItem key={cat.id} mx="auto">
+        //         <UserCard 
+        //         id={cat.id}
+        //         imageUrl={`/image/nyanko${index + 1}.jpg`}
+        //         userName={cat.type} 
+        //         fullName={cat.text}
+        //         onClick = {onClickUser}
+        //         />
+        //     </WrapItem>
+        //     ))}
+        // </Wrap>
+        <Wrap 
+  spacing={{ base: "20px", md: "40px" }} // ベースと中間サイズの間隔を調整
+  justify="center" // カードを中央揃えにする
+  p={{ base: 4, md: 10 }}
+>
+  {cats.map((cat, index) => (
+    <WrapItem key={cat.id} mx="auto" w={{ base: "100%", md: "45%" }} // モバイルで100%、PCで45%の幅 
+    >
+      <UserCard 
+        id={cat.id}
+        imageUrl={`/image/nyanko${index + 1}.jpg`}
+        userName={cat.type} 
+        fullName={cat.text}
+        onClick={onClickUser}
+      />
+    </WrapItem>
+  ))}
+</Wrap>
+
         )}
            <UserDetailModal cat={selectedUser} isOpen={isOpen} isAdmin={loginUser?.isAdmin} onClose={onClose}/>
         </>
