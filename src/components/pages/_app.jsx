@@ -1,10 +1,19 @@
-import { Analytics } from '@vercel/analytics/react'
+import { Analytics } from '@vercel/analytics/react';
 
-export default function App({ Component, pageProps }) {
-  return (
-    <>
-      <Component {...pageProps} />
-      <Analytics />
-    </>
-  )
+export default function Home() {
+return (
+<>
+<Head>
+<title></title>
+</Head>
+<Provider theme={defaultTheme}>
+<View>
+<Header></Header>
+<Content></Content>
+<Footer> </Footer>
+</View>
+</Provider>
+<Analytics /> 
+</>
+);
 }
