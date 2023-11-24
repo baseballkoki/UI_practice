@@ -1,4 +1,6 @@
 import React, { memo } from "react";
+import AdmaxSwitch from "../organisms/ad";
+import AdmaxAd from "../organisms/ad";
 import './Setting.css'; // CSSファイルをインポート
 
 export const Setting = memo(() => {
@@ -8,6 +10,7 @@ export const Setting = memo(() => {
 
     return (
         <div className="setting-container">
+            <AdmaxSwitch id="d4ff05e58b319d4038b42af8ed66584a" />
             <div className="setting-section">
                 <h2>アプリの説明</h2>
                 <p>{appDescription}</p>
