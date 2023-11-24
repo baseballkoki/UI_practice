@@ -4,7 +4,7 @@ import { ProgressBar }  from "../organisms/layout/ProgressBar"
 import './Home.css';
 import nyanko3 from "../../image/nyanko3.png"
 import { cat } from '../types/api/cat';
-import AdmaxAd from '../organisms/ad';
+import AdmaxAd from '../organisms/AdmaxAd';
 
 export const Home = () => {
   const [file, setFile] = useState<File | null>(null);

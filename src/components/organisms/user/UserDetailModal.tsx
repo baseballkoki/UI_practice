@@ -3,6 +3,7 @@ import { ChangeEvent, memo, ReactNode, useEffect, useState } from "react";
 import { PrimatyButton } from "../../atoms/button/PrimatyButton";
 import { User } from "../../types/api/user"
 import { cat } from "../../../components/types/api/cat";
+import AdmaxAd from "../AdmaxAd";
 
 type Props = {
   cat: cat | null;
@@ -33,6 +34,7 @@ export const UserDetailModal = memo((props: Props) => {
     <Modal isOpen={isOpen} onClose={onClose} size="xl">
       <ModalOverlay />
       <ModalContent>
+      <AdmaxAd />
         <ModalHeader>性格情報</ModalHeader>
         <ModalCloseButton />
         <ModalBody mx={4}>
