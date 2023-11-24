@@ -3,12 +3,14 @@ import { ChangeEvent, memo, useState } from "react";
 import { PrimatyButton } from "../atoms/button/PrimatyButton";
 import { useAuth } from "../../hooks/useAuth";
 import nyanko1 from "../../image/nyanko2.png"
+import { inject } from '@vercel/analytics';
 
 export const Login = memo(() => {
     const {login , loading} = useAuth();
     const [userId, setUserId] =useState("");
     const onChangeUserId = (e:ChangeEvent<HTMLInputElement>) => setUserId(e.target.value);
     const [isLargerThan768px] = useMediaQuery("(min-width: 768px)");
+    inject();
 
     //const onClickLogin = () => login(userId); デフォルトのやつ一旦コメントアウト
     const onClickLogin = () => login("1");
